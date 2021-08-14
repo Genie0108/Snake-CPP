@@ -21,11 +21,11 @@ public:
 		Music = M;
 	}
 	void MuteSound() {
-		sndPlaySound("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Music\\Mute.wav", SND_ASYNC | SND_NODEFAULT | SND_LOOP);
+		sndPlaySound("Mute.wav", SND_ASYNC | SND_NODEFAULT | SND_LOOP);
 	}
 	void PlayMusic() {
 		if (Music == true) {
-			sndPlaySound("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Music\\Music.wav", SND_ASYNC | SND_NODEFAULT | SND_LOOP);
+			sndPlaySound("Music.wav", SND_ASYNC | SND_NODEFAULT | SND_LOOP);
 		}
 		else { MuteSound(); }
 	}
@@ -274,7 +274,7 @@ public:
 	}
 	void ReadHighScore() {
 		ifstream SaveGame;
-		SaveGame.open("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Data\\Score.txt");
+		SaveGame.open("Score.txt");
 		SaveGame >> HighScore;
 		SaveGame.close();
 	}
@@ -288,11 +288,11 @@ public:
 			}
 		}
 		ofstream WritePlayer;
-		WritePlayer.open("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Data\\Player.txt", ios::trunc);
+		WritePlayer.open("Player.txt", ios::trunc);
 		WritePlayer << PlayerName;
 		WritePlayer.close();
 		ofstream WriteScore;
-		WriteScore.open("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Data\\Score.txt", ios::trunc);
+		WriteScore.open("Score.txt", ios::trunc);
 		WriteScore << Score;
 		WriteScore.close();
 	}
@@ -301,11 +301,11 @@ public:
 		string TempName;
 		int TempScore;
 		ifstream ReadName;
-		ReadName.open("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Data\\Player.txt");
+		ReadName.open("Player.txt");
 		getline(ReadName, TempName);
 		ReadName.close();
 		ifstream ReadScore;
-		ReadScore.open("D:\\MyRepository\\Projects\\SnakeCPP\\SnakeGame\\SnakeGame\\Data\\Score.txt");
+		ReadScore.open("Score.txt");
 		ReadScore >> TempScore;
 		ReadScore.close();
 		if (TempScore < 100) {
