@@ -5,7 +5,21 @@
 #include<string>
 #include<windows.h>
 #pragma comment(lib,"winmm.lib")
-using namespace std;
+using std::cout;
+using std::cin;
+using std::string;
+using std::ofstream;
+using std::fstream;
+using std::ios;
+using std::ifstream;
+using std::flush;
+
+void SetConsoleSize(int Width, int Height) {
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r);
+	MoveWindow(console, r.left, r.top, Width, Height, TRUE);
+}
 
 int SnakeBodyCount;
 bool GameOver;
@@ -257,8 +271,8 @@ public:
 
 class ScoreManager {
 private:
-	string PlayerName;
-	int Score, HighScore;
+	string TempPlayerName;
+	int Score, TempHighScore;
 public:
 	void SetScore(int Score) {
 		this->Score = Score;
@@ -267,45 +281,45 @@ public:
 		return Score;
 	}
 	void SetHighScore(int HighScore) {
-		this->HighScore = HighScore;
+		this->TempHighScore = HighScore;
 	}
 	int GetHighScore() const {
-		return HighScore;
+		return TempHighScore;
 	}
 	void ReadHighScore() {
 		ifstream SaveGame;
-		SaveGame.open("Score.txt");
-		SaveGame >> HighScore;
+		SaveGame.open("Score.txt", fstream::in | fstream::trunc);
+		SaveGame >> TempHighScore;
 		SaveGame.close();
 	}
 	void WriteHighScore() {
 		cout << "\n\nEnter Player Name : ";
-		getline(cin, PlayerName);
-		if (PlayerName.length() != 6) {
-			while (PlayerName.length() != 6) {
+		getline(cin, TempPlayerName);
+		if (TempPlayerName.length() != 6) {
+			while (TempPlayerName.length() != 6) {
 				cout << "\n\nPlayer Name Should be of 6 Characters. Enter Name Again\n";
-				getline(cin, PlayerName);
+				getline(cin, TempPlayerName);
 			}
 		}
 		ofstream WritePlayer;
-		WritePlayer.open("Player.txt", ios::trunc);
-		WritePlayer << PlayerName;
+		WritePlayer.open("Player.txt", fstream::trunc | fstream::out);
+		WritePlayer << TempPlayerName;
 		WritePlayer.close();
 		ofstream WriteScore;
-		WriteScore.open("Score.txt", ios::trunc);
+		WriteScore.open("Score.txt", fstream::trunc | fstream::out);
 		WriteScore << Score;
 		WriteScore.close();
 	}
-	void ReadAndDisplay() {
+	void DisplayHighScore() {
 		system("cls");
 		string TempName;
 		int TempScore;
 		ifstream ReadName;
-		ReadName.open("Player.txt");
+		ReadName.open("Player.txt", ios::in);
 		getline(ReadName, TempName);
 		ReadName.close();
 		ifstream ReadScore;
-		ReadScore.open("Score.txt");
+		ReadScore.open("Score.txt", ios::in);
 		ReadScore >> TempScore;
 		ReadScore.close();
 		if (TempScore < 100) {
@@ -380,8 +394,8 @@ public:
 	}
 	ScoreManager() {
 		Score = 0;
-		HighScore = 0;
-		PlayerName = "\0";
+		TempHighScore = 0;
+		TempPlayerName = "\0";
 	}
 };
 
@@ -392,8 +406,8 @@ protected:
 	Controls C;
 	ScoreManager S;
 	bool BodyPrintFlag;
-	const int Width = 20;
-	const int Height = 15;
+	const int Width = 52;
+	const int Height = 22;
 	int SnakeHeadX, SnakeHeadY, FruitX, FruitY;
 	int SnakeX[100], SnakeY[100];
 	void Reset() {
@@ -417,16 +431,17 @@ protected:
 		S.SetScore(0);
 	}
 	void Print() {
+		cout << flush;
 		system("cls");
-		cout << " SCORE : " << S.GetScore() << "\n";
+		cout << "                        SCORE : " << S.GetScore() << "\n";
 		for (int i = 0; i < Width + 4; i++) {
-			cout << "=";
+			printf("=");
 		}
 		cout << "\n";
 		for (int i = 0; i < Height; i++) {
 			for (int j = 0; j < Width; j++) {
 				if (j == 0) {
-					cout << "||";
+					printf("||");
 				}
 				if (i == SnakeHeadY && j == SnakeHeadX) {
 					cout << "O";
@@ -443,17 +458,17 @@ protected:
 						}
 					}
 					if (!BodyPrintFlag) {
-						cout << " ";
+						printf(" ");
 					}
 				}
 				if (j == Width - 1) {
-					cout << "||";
+					printf("||");
 				}
 			}
 			cout << "\n";
 		}
 		for (int i = 0; i < Width + 4; i++) {
-			cout << "=";
+			printf("=");
 		}
 	}
 	void Play() {
@@ -566,7 +581,7 @@ private:
 				break;
 			case '2':
 				system("cls");
-				S.ReadAndDisplay();
+				S.DisplayHighScore();
 				cout << "\n\nPRESS ANY KEY TO RETURN TO MENU\n";
 				_getch();
 				goto Menu;
@@ -680,6 +695,8 @@ public:
 };
 
 int main() {
+	std::ios_base::sync_with_stdio(false);
+	SetConsoleSize(650,525);
 	SnakeGame G;
 	return 0;
 }
