@@ -39,7 +39,8 @@ The following concepts of C++ are used in this project,
 
 ## Author
 
-- [@imharris24](https://www.github.com/imharris24)
+- [Github -> @imharris24](https://www.github.com/imharris24)
+- [Insta  -> @imharrisg](https://www.instagram.com/im_harrisg/)
 
   
 ## Support
