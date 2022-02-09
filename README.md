@@ -11,31 +11,15 @@ This Game uses C++ as it's Foundation and has the following features,
 ## Features:
 
 - Play Game
-- Save Player Score in Data Files
-- Display Player Score from Data Files
 - Proper Menu Systems
-- Screens that display credits, instructions and Highscores
-- Ability to Play Music in background
-- Ability to Mute Music from Settings
-- Ability to change display colors from settings
-## How to Play
+- Screens that display credits and instructions
+- 
+## How to Play:
 
  - W,A,S,D to change direction of the Snake.
  - Eat the Fruit to Make the Snake Grow. With each fruit 10 Points will
    be Added to the score.
  - If Snake eats itself, game will be over.
-
-
-The following concepts of C++ are used in this project,
-## Major Concepts of C++:
-
-- Inheritence and Association (Object Oriented Programming)
-- File Handling 
-- Encapsulation (Object Oriented Programming)
-- Abstraction (Object Oriented Programming)
-- STL
-- Concept of Functions
-- Use of Arrays
 
 ## Author
 
