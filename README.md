@@ -13,7 +13,7 @@ This Game uses C++ as it's Foundation and has the following features,
 - Play Game
 - Proper Menu Systems
 - Screens that display credits and instructions
-- 
+
 ## How to Play:
 
  - W,A,S,D to change direction of the Snake.
