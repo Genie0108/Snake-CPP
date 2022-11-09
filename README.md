@@ -21,6 +21,16 @@ This Game uses C++ as it's Foundation and has the following features,
    be Added to the score.
  - If Snake eats itself, game will be over.
 
+## Screenshots
+
+![App Screenshot](https://raw.githubusercontent.com/imharris24/Snake-CPP/main/screenshot/scr01.png?token=GHSAT0AAAAAABZQSA2C5SXNETHS7VAJ2O2CY3J5O6A)
+
+![App Screenshot](https://raw.githubusercontent.com/imharris24/Snake-CPP/main/screenshot/scr02.png?token=GHSAT0AAAAAABZQSA2DTAZJ6GSS4HT3MI6CY3J5PAA)
+
+![App Screenshot](https://raw.githubusercontent.com/imharris24/Snake-CPP/main/screenshot/scr03.png?token=GHSAT0AAAAAABZQSA2C5SXNETHS7VAJ2O2CY3J5O6A)
+
+![App Screenshot](https://raw.githubusercontent.com/imharris24/Snake-CPP/main/screenshot/scr04.png?token=GHSAT0AAAAAABZQSA2DTAZJ6GSS4HT3MI6CY3J5PAA)
+
 ## Author
 
 - [Github -> @imharris24](https://www.github.com/imharris24)
