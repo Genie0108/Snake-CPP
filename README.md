@@ -40,7 +40,7 @@ Here are some related projects,
 
 [Hangman](https://github.com/imharris24/Hangman-CPP)
 
-[Binary Calculator](https://github.com/imharris24/BinaryCalculator-CPP)
+[Binary Calculator](https://github.com/imharris24/Binary-Calculator-CPP)
 
 
 ## Author
